@@ -18,8 +18,19 @@ namespace OdeToFood.Controllers
             _logger = logger;
         }
 
+        public HomeController()
+        {
+        }
+
         public IActionResult Index()
         {
+            return View();
+        }
+
+        public IActionResult About()
+        {
+            ViewBag.Name = "Rasmus";
+            ViewBag.Location = "Tallinn";
             return View();
         }
 
