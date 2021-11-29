@@ -76,8 +76,7 @@ namespace OdeToFood.Controllers
         {
             try
             {
-                return RedirectToAction(nameof(Index));
-            }
+                return RedirectToAction(nameof(Index));            }
             catch
             {
                 return View();
