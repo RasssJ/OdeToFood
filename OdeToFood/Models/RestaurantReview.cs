@@ -7,13 +7,13 @@ namespace OdeToFood.Models
 {
     public class RestaurantReview
     {
-        public int id { get; set; }
+        public int Id { get; set; }
 
-        public string name { get; set; }
+        public string Name { get; set; }
 
-        public string city { get; set; }
+        public string City { get; set; }
 
-        public string country { get; set; }
+        public string Country { get; set; }
 
         public int Rating { get; set; }
     }
