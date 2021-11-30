@@ -1,9 +1,18 @@
-﻿@{
+﻿@model IEnumerable<RestaurantListViewModel>
+@{
     ViewData["Title"] = "Home Page";
 }
+<form method="get">
+    <input type="search" name="searchTerm" />
+    <input type="submit" value="Search By Name" />
+</form>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    <p>@ViewBag.Message</p>
-</div>
+@foreach (var item in Model)
+{
+    <div>
+        <h4>@item.Name</h4>
+        <div>@item.City, @item.Country</div>
+        <div>Number of reviews: @item.CountOfReviews</div>
+        <hr />
+    </div>
+}
