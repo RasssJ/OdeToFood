@@ -24,10 +24,11 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                    </ul>
-                    <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Reviews" asp-action="Index">Reviews</a>
                         </li>
                     </ul>
                     <partial name="_LoginPartial" />
@@ -36,9 +37,12 @@
         </nav>
     </header>
     <div class="container">
+        @RenderSection("Featured", required: false)
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
+
+    @*<div>@await Component.InvokeAsync("BestReview")</div>*@
     </div>
     <footer class="border-top footer text-muted">
         <div class="container">
