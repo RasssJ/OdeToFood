@@ -1,25 +1,15 @@
-﻿@model IEnumerable<OdeToFood.Models.Restaurant>
-
-@{
-    ViewData["Title"] = "Index";
-}
-
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+﻿@model IEnumerable<OdeToFood.Models.RestaurantReview>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Name)
+                @Html.DisplayNameFor(model => model.Rating)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.City)
+                @Html.DisplayNameFor(model => model.Body)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Country)
+                @Html.DisplayNameFor(model => model.ReviewerName)
             </th>
             <th></th>
         </tr>
@@ -29,17 +19,17 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Name)
+                    @Html.DisplayFor(modelItem => item.Rating)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.City)
+                    @Html.DisplayFor(modelItem => item.Body)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Country)
+                    @Html.DisplayFor(modelItem => item.ReviewerName)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Index" asp-controller="Reviews" asp-route-id="@item.Id">Reviews</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                     <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </td>
             </tr>

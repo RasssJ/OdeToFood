@@ -1,0 +1,13 @@
+﻿@model OdeToFood.Models.Restaurant
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Reviews for restaurant @Model.Name</h1>
+
+<partial name="_Reviews" model="@Model.Reviews" />
+
+<p>
+    <a asp-action="Create" asp-route-restaurantId="@Model.Id">Create New</a>
+</p>

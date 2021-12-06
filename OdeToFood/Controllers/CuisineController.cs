@@ -13,9 +13,9 @@ namespace OdeToFood.Controllers
 	{
 		public IActionResult Search(string name = "french")
 		{
-			throw new Exception("Something terrible happened!");
+			//throw new Exception("Something terrible happened!");
 
-			//return Content("Esimene:" + name);
+			return Content("Esimene:" + name);
 		}
 	}
 }
