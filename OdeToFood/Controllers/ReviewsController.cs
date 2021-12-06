@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OdeToFood.Data;
 using OdeToFood.Models;
+using OdeToFood.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -53,13 +54,19 @@ namespace OdeToFood.Controllers
 			return View(model);
 		}
 		[HttpPost]
-		public ActionResult Edit(RestaurantReview review)
+		public ActionResult Edit(int id, ReviewViewModel review)
 		{
+			if (id != review.Id)
+			{
+				return NotFound();
+			}
 			if (ModelState.IsValid)
 			{
-				_context.Entry(review).State = EntityState.Modified;
+				var current = _context.Reviews.Find(id);
+				current.Body = review.Body;
+				current.Rating = review.Rating;
 				_context.SaveChanges();
-				return RedirectToAction(nameof(Index), new { id = review.RestaurantId });
+				return RedirectToAction(nameof(Index), new { id = current.RestaurantId });
 			}
 			return View(review);
 		}
