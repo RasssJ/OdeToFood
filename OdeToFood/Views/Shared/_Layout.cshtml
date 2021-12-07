@@ -9,6 +9,7 @@
 </head>
 <body>
     <header>
+        <img src="~/img/foodpic.jpeg" alt="Sample Photo" />
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">OdeToFood</a>
@@ -40,9 +41,11 @@
         @RenderSection("Featured", required: false)
         <main role="main" class="pb-3">
             @RenderBody()
+            @*<div>@await Component.InvokeAsync("BestReview")</div>*@
         </main>
-        @*<div>@await Component.InvokeAsync("BestReview")</div>*@
     </div>
+
+
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2021 - OdeToFood - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
@@ -50,6 +53,7 @@
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @Html.RenderUnobtrusiveAjaxScript();
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
