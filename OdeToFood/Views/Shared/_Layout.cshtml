@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - OdeToFood</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <!--lisa js-->
+
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
     <header>
-        <img src="~/img/foodpic.jpeg" alt="Sample Photo" />
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">OdeToFood</a>
@@ -29,29 +30,30 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Restaurants" asp-action="Index">Restaurants</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Restaurants" asp-action="Index">Restaurant</a>
                         </li>
                     </ul>
+
                     <partial name="_LoginPartial" />
                 </div>
             </div>
         </nav>
     </header>
     <div class="container">
-        @RenderSection("Featured", required: false)
         <main role="main" class="pb-3">
+            @RenderSection("Featured", required: false)
             @RenderBody()
-            @*<div>@await Component.InvokeAsync("BestReview")</div>*@
+            @*  <div>@await Component.InvokeAsync("BestReview")</div>*@
+
         </main>
     </div>
-
-
     <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2021 - OdeToFood - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jqueryui/jquery-ui.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     @Html.RenderUnobtrusiveAjaxScript();
     <script src="~/js/site.js" asp-append-version="true"></script>
