@@ -9,21 +9,22 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using X.PagedList;
 
 namespace OdeToFood.Controllers
 {
 	public class HomeController : Controller
 	{
 		private readonly ILogger<HomeController> _logger;
-
 		private ApplicationDbContext _context;
+
 		public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
 		{
 			_logger = logger;
 			_context = context;
 		}
 
-		public IActionResult Autocomplete(string term)
+		public ActionResult Autocomplete(string term)
 		{
 			var model = _context.Restaurants
 				.Where(r => r.Name.StartsWith(term))
@@ -35,22 +36,22 @@ namespace OdeToFood.Controllers
 			return Json(model);
 		}
 
-		public IActionResult Index(string searchTerm = null)
+		public IActionResult Index(string searchTerm = null, int page = 1)
 		{
-
 			var model = _context.Restaurants
-				.OrderByDescending(r => r.Reviews.Average(review => review.Rating)
-				)
-				.Where(r => searchTerm == null || r.Name.StartsWith(searchTerm))
+				.OrderByDescending(
+					r => r.Reviews.Average(review => review.Rating)
+					)
+				.Where(r => searchTerm == null || r.Name.Contains(searchTerm))
 				.Select(r => new RestaurantListViewModel
 				{
 					Id = r.Id,
 					Name = r.Name,
-					Country = r.Country,
 					City = r.City,
+					Country = r.Country,
 					CountOfReviews = r.Reviews.Count
+				}).ToPagedList(page, 10);
 
-				});
 
 			if (Request.IsAjaxRequest())
 			{
@@ -78,7 +79,5 @@ namespace OdeToFood.Controllers
 		{
 			return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
 		}
-
-
 	}
 }
