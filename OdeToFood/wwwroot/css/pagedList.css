@@ -60,6 +60,7 @@
 .pagination > .disabled > a:focus {
     color: #999999;
     cursor: not-allowed;
+    pointer-events: none;
     background-color: #ffffff;
     border-color: #dddddd;
 }
