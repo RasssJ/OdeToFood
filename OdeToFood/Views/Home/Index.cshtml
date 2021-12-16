@@ -1,8 +1,16 @@
-﻿@{
+﻿@model IPagedList<RestaurantListViewModel>
+
+@{
     ViewData["Title"] = "Home Page";
 }
+<form method="get"
+      action="@Url.Action("Index")"
+      data-otf-ajax="true"
+      data-otf-target="#restaurantList">
+    <input type="search" name="searchTerm"
+           data-otf-autocomplete="@Url.Action("Autocomplete")" />
+    <input type="submit" value="Search By Name" />
+</form>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+
+<partial name="_Restaurants" model="Model" />
